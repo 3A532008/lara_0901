@@ -44,9 +44,18 @@
                         <td>文章標題</td>
                         <td style="text-align: center">V</td>
                         <td>
+                            <div>
+
                             <a href="{{ route('admin.posts.edit', $id) }}">編輯</a>
                             /
-                            <a href="#">刪除</a>
+                                <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+
+                                    <button class="btn btn-link">刪除</button>
+                                </form>
+                            </div>
+
                         </td>
                     </tr>
                 @endforeach
